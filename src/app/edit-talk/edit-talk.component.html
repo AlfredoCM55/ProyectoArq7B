@@ -1,0 +1,36 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <img *ngIf="data?.talk.image" [src]="data?.talk.image" alt="Talk image preview">
+  <mat-form-field>
+    <input matInput placeholder="Decripcion de la tarea" required formControlName="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Asignacion</mat-label>
+    <mat-select formControlName="issueType">
+      <mat-option [style.background]="i.color" *ngFor="let i of issueTypesArrayWithColor" [value]="i.name">
+        {{i.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Usuario" required formControlName="speaker">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Imagen en URL" formControlName="image">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-chip-list #tags formControlName="tags">
+      <mat-chip [style.background]="tag?.color ? tag.color : '#e0e0e0'" *ngFor="let tag of this.formGroup.get('tags').value" (removed)="removeTag(tag)">
+        {{tag?.name}}
+        <mat-icon (click)="openColorPickerDialog(tag)" class="mat-icon notranslate mat-chip-remove mat-chip-trailing-icon material-icons mat-icon-no-color">color_lense</mat-icon>
+        <mat-icon matChipRemove>cancelar</mat-icon>
+      </mat-chip>
+      <input placeholder="tags" [matChipInputFor]="tags" (matChipInputTokenEnd)="addTag($event)" />
+    </mat-chip-list>
+  </mat-form-field>
+  <mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close>Cancelar</button>
+
+    <button mat-button type="submit" [disabled]="formGroup.invalid">{{data?.edit ? 'Actualizar' : 'Add'}}</button>
+  </mat-dialog-actions>
+</form>

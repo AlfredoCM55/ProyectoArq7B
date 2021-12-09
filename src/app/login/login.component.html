@@ -1,0 +1,23 @@
+
+<div class="login">
+    <form class="custom-form" method="post"(ngSubmit)="log(login.value)" [formGroup]="login" >
+      <h1>Login</h1>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        formControlName= "emailUsuario"
+        placeholder="email"
+        required="required"
+      />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        formControlName= "contraseñaUsuario"
+        name="password"
+        placeholder="password"
+        required="required"
+      />
+      <button type="submit">Log in</button>
+    </form>
+  </div>

@@ -1,0 +1,41 @@
+<div class="register">
+    <form class="custom-form" method="post" [formGroup]="registro" (ngSubmit)="enviar(registro.value)">
+      <h1>Register</h1>
+      <input
+        type="email"
+        formControlName= "emailUsuario"
+        name="emailUsuario"
+        placeholder="email"
+        required="required"
+      />
+      <input
+        type="text"
+        formControlName= "nombreUsuario"
+        name="nombreUsuario"
+        placeholder="Nombre"
+        required="required"
+      />
+      <input
+        type="text"
+        formControlName="apellidoUsuario"
+        name="apellidoUsuario"
+        placeholder="Apellido"
+        required="required"
+      />
+      <input
+        type="float"
+        formControlName="numeroUsuario"
+        name="numeroUsuario"
+        placeholder="numero"
+        required="required"
+      />
+      <input
+        type="password"
+        formControlName="contraseñaUsuario"
+        name="password"
+        placeholder="password"
+        required="required"
+      />
+      <button type="submit">Register</button>
+    </form>
+  </div>
